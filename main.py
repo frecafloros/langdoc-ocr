@@ -4,7 +4,19 @@ from tqdm import tqdm
 import pickle
 import os
 
-def ocr_scanned_pdf(pdf_path: str, name: str, lang: str):
+def ocr_scanned_pdf(pdf_path: str, name: str, lang: str) -> None:
+    """
+    PDFのOCRを実行して結果を保存する
+    
+    Parameters
+    ----------
+    pdf_path : str
+        処理対象のpdfのパス。
+    name : str
+        OCR後の.pkl, .txtを保存する際のファイル名。
+    lang : str
+        書かれている言語。ex: 英語:eng、日本語:jpn
+    """
     # convert pdf to image
     images = convert_from_path(pdf_path)
 
@@ -29,7 +41,7 @@ def ocr_scanned_pdf(pdf_path: str, name: str, lang: str):
         f.write(texts)
 
 def main():
-    ocr_scanned_pdf("data/pdf/test.pdf", "data/img/test")
+    ocr_scanned_pdf("data/pdf/倫理、哲学note.pdf", "倫理、哲学note", "jpn")
 
 if __name__ == "__main__":
     main()
